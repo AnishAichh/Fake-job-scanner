@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Scam Job Detector",
+    "version": "1.0",
+    "description": "Detect scams in job listings using ML.",
+    "permissions": [
+        "scripting",
+        "activeTab"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://localhost:3000/mock-job-board.html"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
