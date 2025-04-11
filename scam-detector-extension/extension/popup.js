@@ -7,14 +7,13 @@ document.getElementById("scanBtn").addEventListener("click", async () => {
     });
 });
 
-// Receive response from content.js
-chrome.runtime.onMessage.addListener((result) => {
+chrome.runtime.onMessage.addListener((data) => {
     const status = document.getElementById("status");
-    if (result.flagged) {
-        status.innerText = `⚠️ Scam detected! Probability: ${result.scam_probability}%`;
+    if (data.flagged) {
+        status.innerText = `⚠️ Scam Detected!\nProbability: ${data.scam_probability}%`;
         status.style.color = "red";
     } else {
-        status.innerText = `✅ Looks safe. Scam Probability: ${result.scam_probability}%`;
+        status.innerText = `✅ Legit Job\nScam Probability: ${data.scam_probability}%`;
         status.style.color = "green";
     }
 });
